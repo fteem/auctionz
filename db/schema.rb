@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012201812) do
+ActiveRecord::Schema.define(version: 20171012202013) do
 
   create_table "auctions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "lot_id"
+    t.integer "user_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lot_id"], name: "index_bids_on_lot_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "lots", force: :cascade do |t|
