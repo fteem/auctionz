@@ -2,6 +2,8 @@ module API
   module V1
     module Lots
       class Bids < Grape::API
+        include API::V1::Defaults
+
         resource :lots do
           route_param :lot_id do
             params do
