@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012202013) do
+ActiveRecord::Schema.define(version: 20171021170416) do
 
   create_table "auctions", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20171012202013) do
     t.datetime "updated_at", null: false
     t.index ["lot_id"], name: "index_bids_on_lot_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "idempotent_actions", force: :cascade do |t|
+    t.string "idempotency_key"
+    t.string "body"
+    t.integer "status"
+    t.string "headers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lots", force: :cascade do |t|

@@ -1,0 +1,2 @@
+class IdempotentAction < ApplicationRecord
+end
