@@ -16,6 +16,10 @@ module Auctionz
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.middleware.use IdempotentRequest::Database
+    # Use Idempotent keys stored in a database
+    # config.middleware.use IdempotentRequest::Database
+
+    # Use Idempotent keys stored in a YAML::Store
+    config.middleware.use IdempotentRequest::YStore
   end
 end
