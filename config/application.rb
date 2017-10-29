@@ -20,6 +20,9 @@ module Auctionz
     # config.middleware.use IdempotentRequest::Database
 
     # Use Idempotent keys stored in a YAML::Store
-    config.middleware.use IdempotentRequest::YStore
+    # config.middleware.use IdempotentRequest::YStore
+
+    # Use Idempotent keys stored in Redis
+    config.middleware.use IdempotentRequest::Redis
   end
 end
