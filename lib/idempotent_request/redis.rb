@@ -2,6 +2,7 @@ module IdempotentRequest
   class Redis
     IDEMPOTENCY_HEADER = 'HTTP_IDEMPOTENCY_KEY'.freeze
     REDIS_NAMESPACE = 'idempotency_keys'.freeze
+    EXPIRE_TIME = 1.day.to_i
 
     attr_reader :redis
 
@@ -53,6 +54,7 @@ module IdempotentRequest
 
     def set(key, payload)
       redis.hmset namespaced_key(key), *payload
+      redis.expire namespaced_key(key), EXPIRE_TIME
     end
 
     def payload(status, headers, response)
